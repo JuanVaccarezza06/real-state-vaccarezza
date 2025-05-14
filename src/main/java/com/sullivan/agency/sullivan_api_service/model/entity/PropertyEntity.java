@@ -4,16 +4,27 @@ import com.sullivan.agency.sullivan_api_service.model.enums.AMENITIES;
 import com.sullivan.agency.sullivan_api_service.model.enums.OPERATION_TYPE;
 import com.sullivan.agency.sullivan_api_service.model.enums.PROPERTY_TYPE;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(
+        name = "tbl_property"
+)
 public class PropertyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long property_id;
+    private long id;
 
     @Column(name = "property_name", nullable = false)
     private String title;
@@ -42,7 +53,7 @@ public class PropertyEntity {
     private boolean active;
 
     @OneToMany(
-            mappedBy = "property_id",
+            mappedBy = "property",
             fetch = FetchType.LAZY,
             cascade = {
             CascadeType.MERGE, CascadeType.PERSIST}
@@ -50,17 +61,17 @@ public class PropertyEntity {
     List<InquiryEntity> inquiryEntities;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    OwnerEntity owner;
+    @JoinColumn(name = "owner_id",nullable = false)
+    private OwnerEntity owner;
 
     // List<Image?> imagesProperty;
 
     @OneToOne
-    @JoinColumn(name ="property_structure")
+    @JoinColumn(name ="property_structure",nullable = false)
     private PropertyStructureEntity propertyStructureEntity;
 
     @OneToOne
-    @JoinColumn(name ="property_adress")
+    @JoinColumn(name ="property_adress",nullable = false)
     private PropertyAdressEntity propertyAdressEntity;
 
 }

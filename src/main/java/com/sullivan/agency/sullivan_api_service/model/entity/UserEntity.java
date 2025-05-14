@@ -53,7 +53,7 @@ public class UserEntity extends PersonEntity{
         // Explicitly set fetch strategy; @OneToOne defaults to EAGER but lo marcamos para mayor claridad.
         @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
         // Defines the foreign key column in this table that points to CredentialEntity (credential_id)
-        @JoinColumn(name = "credential_id")
+        @JoinColumn(name = "credential_id",nullable = false)
         private CredentialEntity credential;
 
     @OneToMany(
@@ -70,5 +70,5 @@ public class UserEntity extends PersonEntity{
             cascade = {
                     CascadeType.REMOVE,CascadeType.MERGE}
     )
-    private List<ContactEntity> contact;
+    private List<GeneralInquiryEntity> general_inquiries;
 }

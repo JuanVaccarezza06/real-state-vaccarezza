@@ -1,10 +1,20 @@
 package com.sullivan.agency.sullivan_api_service.model.entity;
 
 import jakarta.persistence.*;
-import org.springframework.aop.target.LazyInitTargetSource;
+import lombok.*;
 
 import java.util.List;
 
+@Entity
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table(
+        name = "tbl_owner"
+)
 public class OwnerEntity {
 
     @Id
