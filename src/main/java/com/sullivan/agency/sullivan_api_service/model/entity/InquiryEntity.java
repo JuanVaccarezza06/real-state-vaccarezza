@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class InquiryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, name = "inquiry_date")
     private LocalDate InquiryDate;

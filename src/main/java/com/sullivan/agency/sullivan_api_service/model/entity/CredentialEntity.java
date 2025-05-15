@@ -17,10 +17,12 @@ import lombok.*;
 public class CredentialEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
-    @JoinColumn(name = "user_id",nullable = false)
+    @Column(name = "credential_username",nullable = false,unique = true)
+    private String username;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false,unique = true)
     private UserEntity user;
 }

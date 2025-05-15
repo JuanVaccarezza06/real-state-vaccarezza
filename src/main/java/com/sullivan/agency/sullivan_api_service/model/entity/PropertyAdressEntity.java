@@ -17,7 +17,7 @@ public class PropertyAdressEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name ="property_province",nullable = false)
     private String province;

@@ -20,7 +20,7 @@ public class OwnerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "owner_id")
-    private long id;
+    private Long id;
 
     @Column(
             name = "owner_first_name",

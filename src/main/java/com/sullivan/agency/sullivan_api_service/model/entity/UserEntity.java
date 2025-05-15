@@ -22,7 +22,7 @@ public class UserEntity extends PersonEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long id;
+    private Long id;
 
     @Column(
             name = "user_first_name",
@@ -49,12 +49,6 @@ public class UserEntity extends PersonEntity{
             unique = true
     )
     private String number_phone;
-
-        // Explicitly set fetch strategy; @OneToOne defaults to EAGER but lo marcamos para mayor claridad.
-        @OneToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
-        // Defines the foreign key column in this table that points to CredentialEntity (credential_id)
-        @JoinColumn(name = "credential_id",nullable = false)
-        private CredentialEntity credential;
 
     @OneToMany(
             mappedBy = "user"

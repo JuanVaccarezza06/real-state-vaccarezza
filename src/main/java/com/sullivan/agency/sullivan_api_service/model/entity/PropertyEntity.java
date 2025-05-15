@@ -24,7 +24,7 @@ public class PropertyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "property_name", nullable = false)
     private String title;
