@@ -33,7 +33,7 @@ public class PropertyEntity {
     private String description;
 
     @Column(name = "property_price",nullable = false)
-    private BigDecimal price;
+    private Double price;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "property_type",nullable = false)
@@ -44,6 +44,7 @@ public class PropertyEntity {
     private OPERATION_TYPE operationType;
 
     @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
     private List<AMENITIES> amenitiesList;
 
     @Column(name = "property_publication_date",nullable = false)
@@ -67,11 +68,11 @@ public class PropertyEntity {
     // List<Image?> imagesProperty;
 
     @OneToOne
-    @JoinColumn(name ="property_structure",nullable = false)
+    @JoinColumn(name ="property_structure")
     private PropertyStructureEntity propertyStructureEntity;
 
     @OneToOne
-    @JoinColumn(name ="property_adress",nullable = false)
+    @JoinColumn(name ="property_adress")
     private PropertyAdressEntity propertyAdressEntity;
 
 }

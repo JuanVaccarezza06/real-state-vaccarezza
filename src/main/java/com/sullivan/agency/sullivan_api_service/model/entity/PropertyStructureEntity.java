@@ -35,7 +35,7 @@ public class PropertyStructureEntity {
     private int bedrooms;
 
     @Column(name = "property_year_construction",nullable = false)
-    private String yearConstruction;
+    private int yearConstruction;
 
     @OneToOne
     @JoinColumn(name = "property_id",nullable = false)

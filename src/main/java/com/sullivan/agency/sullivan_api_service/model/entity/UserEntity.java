@@ -50,6 +50,11 @@ public class UserEntity extends PersonEntity{
     )
     private String number_phone;
 
+    @OneToOne()
+    @JoinColumn(name = "credential_id",unique = true,nullable = true)
+    private CredentialEntity credential;
+
+
     @OneToMany(
             mappedBy = "user"
             ,fetch = FetchType.LAZY,
